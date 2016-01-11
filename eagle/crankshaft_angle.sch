@@ -480,6 +480,10 @@ W = angled&lt;p&gt;
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="113,1,116.736,74.826,FRAME1,,,,,"/>
+<approved hash="113,1,169.6,73.8547,MALE_HEADER,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
