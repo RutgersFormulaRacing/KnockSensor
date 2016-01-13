@@ -21,6 +21,9 @@ int main(void) {
             PORTB |= 0x10;
             tooth = 1;
         }
+        if(tooth == 3) {
+            PORTB &= 0xEF;
+        }
     }
 }
 
