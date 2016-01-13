@@ -1,3 +1,5 @@
+FILE       = crankshaft_angle
+
 DEVICE     = attiny25           # See avr-help for all possible devices
 CLOCK      = 8000000
 BAUD       = 115200
@@ -9,14 +11,14 @@ AVRDUDE    = avrdude -c $(PROGRAMMER) -p $(DEVICE) -b $(BAUD) -P $(PORT)
 COMPILE    = avr-gcc -mmcu=$(DEVICE)
 
 hex:
-	$(COMPILE) -Wall -O3 -DF_CPU=$(CLOCK) -c $(prog).c -std=c99
-	$(COMPILE) -o $(prog).elf $(prog).o
-	avr-objcopy -O ihex -R .eeprom $(prog).elf $(prog).hex
-	rm $(prog).o
-	rm $(prog).elf
+	$(COMPILE) -Wall -O3 -DF_CPU=$(CLOCK) -c $(FILE).c -std=c99
+	$(COMPILE) -o $(FILE).elf $(FILE).o
+	avr-objcopy -O ihex -R .eeprom $(FILE).elf $(FILE).hex
+	rm $(FILE).o
+	rm $(FILE).elf
 
 flash:
-	$(AVRDUDE) -U $(prog).hex
+	$(AVRDUDE) -U $(FILE).hex
 
 fuses:
 	$(AVRDUDE) -u $(FUSES)
