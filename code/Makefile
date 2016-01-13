@@ -1,11 +1,11 @@
 FILE       = crankshaft_angle
 
 DEVICE     = attiny25           # See avr-help for all possible devices
-CLOCK      = 8000000
+CLOCK      = 1000000
 BAUD       = 115200
 PORT       = /dev/ttyACM0
 PROGRAMMER = arduino
-FUSES      = -U lfuse:w:0xe2:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m  # settings as taken from http://www.engbedded.com/fusecalc/
+FUSES      = -U lfuse:w:0x62:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m  # settings as taken from http://www.engbedded.com/fusecalc/
 
 AVRDUDE    = avrdude -c $(PROGRAMMER) -p $(DEVICE) -b $(BAUD) -P $(PORT)
 COMPILE    = avr-gcc -mmcu=$(DEVICE)

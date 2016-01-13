@@ -1,4 +1,4 @@
-#define F_CPU 8000000
+#define F_CPU 1000000
 
 #include <stdlib.h>
 #include <avr/interrupt.h>
@@ -8,31 +8,33 @@ uint8_t tmrOvf = 0;
 uint16_t prevPeriod = 0;
 
 uint16_t micros(void) {
-    return ((uint16_t)tmrOvf*255+TCNT0); //with prescaler 8, each tick is one microsecond
+    return ((((uint16_t)tmrOvf)<<8) | TCNT0); //bitshift multiplies by 256, with 1MHz timer each tick is one microsecond
 }
 
 int main(void) {
-    TCCR0B = 0x02; //set prescaler to 8
+    TCCR0B = 0x01; //set prescaler to 1
     TIMSK = 0x02; //enable overflow interrupts
     DDRB = 0x10; //set PB4 to output
+    MCUCR |= 0x03; //set INT0/PB2 to trigger on rising edge
+    GIMSK = 0x40; //enable INT0 interrupts
 
     while(1) {
-        if(micros() > prevPeriod + (prevPeriod >> 1)) {
-            PORTB |= 0x10;
-            tooth = 1;
+        if(micros() > prevPeriod + (prevPeriod >> 1)) { //if it's been more than 1.5*the previous period, probably missed a tooth
+            PORTB |= 0x10; //turn on pb4
+            tooth = 1; //reset tooth count
         }
         if(tooth == 3) {
-            PORTB &= 0xEF;
+            PORTB &= 0xEF; //turn off pb4
         }
     }
 }
 
 ISR(INT0_vect) {
     TCNT0 = 0;
-    tmrOvf = 0;
     tooth++;
+    tmrOvf = 0;
 }
 
-ISR( TIMER0_OVF_vect) {
+ISR(TIMER0_OVF_vect) {
     tmrOvf++;
 }
