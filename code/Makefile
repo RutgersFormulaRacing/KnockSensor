@@ -8,10 +8,6 @@ FUSES      = -U lfuse:w:0xe2:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m  # settings a
 AVRDUDE    = avrdude -c $(PROGRAMMER) -p $(DEVICE) -b $(BAUD) -P $(PORT)
 COMPILE    = avr-gcc -mmcu=$(DEVICE)
 
-all:
-	make hex prog=$(prog)
-	make fuses
-	make flash prog=$(prog)
 hex:
 	$(COMPILE) -Wall -O3 -DF_CPU=$(CLOCK) -c $(prog).c -std=c99
 	$(COMPILE) -o $(prog).elf $(prog).o
