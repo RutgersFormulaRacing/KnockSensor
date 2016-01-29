@@ -8,14 +8,15 @@ uint8_t tmrOvf = 0;
 uint16_t prevPeriod = 0;
 
 uint16_t micros(void) {
-    return ((((uint16_t)tmrOvf)<<8) | TCNT0); //bitshift multiplies by 256, with 1MHz timer each tick is one microsecond
+    return ((((uint16_t)tmrOvf)<<8) | TCNT0); //bitshift multiplies by 256, with 1MHz counter each tick is one microsecond
 }
 
 int main(void) {
-    TCCR0B = 0x01; //set prescaler to 1
-    TIMSK = 0x02; //enable overflow interrupts
+    TCCR0B = 0x01; //set counter prescaler to 1
+		   //0x01 for prescaler=1, 0x02 for prescaler=8
+    TIMSK = 0x02; //enable counter0 overflow interrupts
     DDRB = 0x10; //set PB4 to output
-    MCUCR |= 0x03; //set INT0/PB2 to trigger on rising edge
+    MCUCR |= 0x03; //set INT0/PB2 to trigger an interrupt on every rising edge
     GIMSK = 0x40; //enable INT0 interrupts
 
     while(1) {
