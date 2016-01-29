@@ -18,6 +18,8 @@ int main(void) {
     DDRB = 0x10; //set PB4 to output
     MCUCR |= 0x03; //set INT0/PB2 to trigger an interrupt on every rising edge
     GIMSK = 0x40; //enable INT0 interrupts
+    
+    sei(); //turn on interrupts globally
 
     while(1) {
         if(micros() > prevPeriod + (prevPeriod >> 1)) { //if it's been more than 1.5*the previous period, probably missed a tooth
