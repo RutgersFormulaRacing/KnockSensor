@@ -6542,7 +6542,7 @@ at 27/07/2012 14:02:49</description>
 <instance part="R4" gate="G$1" x="114.3" y="116.84"/>
 <instance part="R5" gate="G$1" x="104.14" y="137.16"/>
 <instance part="R6" gate="G$1" x="119.38" y="137.16"/>
-<instance part="U$1" gate="G$1" x="38.1" y="93.98"/>
+<instance part="U$1" gate="G$1" x="35.56" y="91.44"/>
 <instance part="VCC" gate="1" x="-10.16" y="73.66"/>
 <instance part="GND" gate="1" x="-10.16" y="66.04"/>
 <instance part="PIEZO_IN" gate="1" x="-10.16" y="58.42"/>
@@ -6550,13 +6550,13 @@ at 27/07/2012 14:02:49</description>
 <instance part="SIGNAL_OUT" gate="1" x="-10.16" y="50.8"/>
 <instance part="MALE_FTDI_HEADER" gate="1" x="175.26" y="71.12" rot="MR0"/>
 <instance part="P+1" gate="VCC" x="5.08" y="73.66" rot="R270"/>
-<instance part="P+2" gate="VCC" x="86.36" y="134.62" rot="R90"/>
+<instance part="P+2" gate="VCC" x="81.28" y="137.16" rot="R90"/>
 <instance part="P+3" gate="VCC" x="132.08" y="53.34" rot="R180"/>
 <instance part="GND1" gate="1" x="139.7" y="53.34"/>
-<instance part="GND2" gate="1" x="91.44" y="121.92" rot="R270"/>
+<instance part="GND2" gate="1" x="99.06" y="121.92" rot="R270"/>
 <instance part="GND3" gate="1" x="2.54" y="66.04" rot="R90"/>
-<instance part="P+4" gate="VCC" x="68.58" y="121.92" rot="R270"/>
-<instance part="GND4" gate="1" x="68.58" y="114.3" rot="R90"/>
+<instance part="P+4" gate="VCC" x="68.58" y="119.38" rot="R270"/>
+<instance part="GND4" gate="1" x="68.58" y="111.76" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -6593,9 +6593,9 @@ at 27/07/2012 14:02:49</description>
 <wire x1="88.9" y1="76.2" x2="73.66" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="76.2" x2="73.66" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="33.02" x2="-12.7" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="33.02" x2="-12.7" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="33.02" x2="-12.7" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="15/A1/T"/>
-<wire x1="-12.7" y1="83.82" x2="15.24" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="81.28" x2="12.7" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -6619,7 +6619,7 @@ at 27/07/2012 14:02:49</description>
 <wire x1="124.46" y1="121.92" x2="124.46" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="116.84" x2="129.54" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="R4" gate="G$1" pin="E"/>
-<wire x1="93.98" y1="121.92" x2="114.3" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="121.92" x2="114.3" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="121.92" x2="124.46" y2="121.92" width="0.1524" layer="91"/>
 <junction x="114.3" y="121.92"/>
 <junction x="124.46" y="121.92"/>
@@ -6628,7 +6628,7 @@ at 27/07/2012 14:02:49</description>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
 <pinref part="U$1" gate="G$1" pin="GND"/>
-<wire x1="66.04" y1="114.3" x2="60.96" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="111.76" x2="58.42" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND" gate="1" pin="P"/>
@@ -6651,7 +6651,7 @@ at 27/07/2012 14:02:49</description>
 <segment>
 <pinref part="P+4" gate="VCC" pin="VCC"/>
 <pinref part="U$1" gate="G$1" pin="VIN"/>
-<wire x1="66.04" y1="121.92" x2="60.96" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="119.38" x2="58.42" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+1" gate="VCC" pin="VCC"/>
@@ -6659,13 +6659,14 @@ at 27/07/2012 14:02:49</description>
 <wire x1="2.54" y1="73.66" x2="-7.62" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U2" gate="A" pin="VDD+"/>
 <pinref part="R5" gate="G$1" pin="1"/>
-<wire x1="99.06" y1="134.62" x2="129.54" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="137.16" x2="99.06" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
-<wire x1="88.9" y1="134.62" x2="99.06" y2="134.62" width="0.1524" layer="91"/>
-<junction x="99.06" y="134.62"/>
+<wire x1="83.82" y1="137.16" x2="91.44" y2="137.16" width="0.1524" layer="91"/>
+<pinref part="U2" gate="A" pin="VDD+"/>
+<wire x1="91.44" y1="137.16" x2="99.06" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="134.62" x2="91.44" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="134.62" x2="91.44" y2="137.16" width="0.1524" layer="91"/>
+<junction x="91.44" y="137.16"/>
 </segment>
 </net>
 <net name="MOSI/TX" class="0">
@@ -6701,11 +6702,9 @@ at 27/07/2012 14:02:49</description>
 <segment>
 <pinref part="U2" gate="A" pin="1IN+"/>
 <pinref part="PIEZO_IN" gate="1" pin="P"/>
-<wire x1="81.28" y1="129.54" x2="129.54" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="-7.62" y1="58.42" x2="-20.32" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="-20.32" y1="58.42" x2="-20.32" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="-20.32" y1="134.62" x2="81.28" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="134.62" x2="81.28" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="58.42" x2="-17.78" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="58.42" x2="-17.78" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="129.54" x2="129.54" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SIGNAL_OUT" class="0">
@@ -6715,15 +6714,15 @@ at 27/07/2012 14:02:49</description>
 <wire x1="165.1" y1="134.62" x2="170.18" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="111.76" x2="124.46" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="104.14" x2="170.18" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="132.08" x2="106.68" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="132.08" x2="91.44" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="R4" gate="G$1" pin="A"/>
-<wire x1="106.68" y1="111.76" x2="114.3" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="111.76" x2="114.3" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="111.76" x2="114.3" y2="111.76" width="0.1524" layer="91"/>
 <junction x="114.3" y="111.76"/>
-<wire x1="106.68" y1="132.08" x2="2.54" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="132.08" x2="2.54" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="14/A0"/>
-<wire x1="2.54" y1="86.36" x2="15.24" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="132.08" x2="2.54" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="83.82" x2="12.7" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="132.08" x2="2.54" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -6761,8 +6760,8 @@ at 27/07/2012 14:02:49</description>
 <net name="N$1" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="A14/DAC"/>
-<wire x1="60.96" y1="96.52" x2="66.04" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="96.52" x2="66.04" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="93.98" x2="66.04" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="93.98" x2="66.04" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="SIGNAL_OUT" gate="1" pin="P"/>
 <wire x1="66.04" y1="50.8" x2="-7.62" y2="50.8" width="0.1524" layer="91"/>
 </segment>
