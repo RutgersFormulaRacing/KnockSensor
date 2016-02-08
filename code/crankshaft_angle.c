@@ -20,16 +20,16 @@ int main(void) {
     DDRB = 0x10; //set PB4 as output
     MCUCR |= 0x03; //set INT0/PB2 to trigger an interrupt on every rising edge
     GIMSK = 0x40; //enable INT0 interrupts
-    
+
     sei(); //turn on interrupts globally
 
     while(1) {
         if(micros() > (prevPeriod + (prevPeriod >> 1))) { //if it's been more than 1.5*the previous period, probably missed a tooth, and we're back at the beginning
-            PORTB |= 0x10; //turn on pb4
+            PORTB &= 0xEF; //turn off pb4
             tooth = 1; //reset tooth count
         }
         if(tooth - TDC_TOOTH== 2) {	//we've reached the end of the "knock zone"
-            PORTB &= 0xEF; //turn off pb4
+            PORTB |= 0x10; //turn on pb4
         }
     }
 }
