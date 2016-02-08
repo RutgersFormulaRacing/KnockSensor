@@ -10,6 +10,7 @@ const int diagLED_knock_detected = 12;
 const int diagLED_in_knock_zone = 11;
 const int diagLED_receiving_vibration_signal = 10;
 const int vibration_signal_pin = A0;
+const int knock_zone_pin = 15;
 
 // GUItool: begin automatically generated code
 AudioInputAnalog         adc1;           //xy=137.1999969482422,188.1999969482422
@@ -29,11 +30,13 @@ AudioConnection          patchCord6(adc1, rms1);
 //elapsedMicros emicros;
 
 void setup() {
+  AudioMemory(10);
+  
   pinMode(diagLED_device_on, OUTPUT);
   pinMode(diagLED_knock_detected, OUTPUT);
   pinMode(diagLED_in_knock_zone, OUTPUT);
   pinMode(diagLED_receiving_vibration_signal, OUTPUT);
-  pinMode(vibration_signal_pin, INPUT);
+  pinMode(knock_zone_pin, INPUT_PULLUP);
 }
 
 void loop() {
