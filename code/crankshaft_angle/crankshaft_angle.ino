@@ -1,4 +1,4 @@
-#define F_CPU 1000000   //CKDIV8 fuse is set
+//#define F_CPU 1000000   //CKDIV8 fuse is set
 
 #include <stdlib.h>
 #include <avr/interrupt.h>
@@ -9,7 +9,7 @@ uint8_t tooth = 1;
 uint8_t tmrOvf = 0;
 uint16_t prevPeriod = 0;
 
-uint16_t micros(void) {
+uint16_t m_micros(void) {
     return ((((uint16_t)tmrOvf)<<8) | TCNT0); //bitshift multiplies by 256, with 1MHz counter each tick is one microsecond
 }
 
@@ -24,7 +24,7 @@ int main(void) {
     sei(); //turn on interrupts globally
 
     while(1) {
-        if(micros() > (prevPeriod + (prevPeriod >> 1))) { //if it's been more than 1.5*the previous period, probably missed a tooth, and we're back at the beginning
+        if(m_micros() > (prevPeriod + (prevPeriod >> 1))) { //if it's been more than 1.5*the previous period, probably missed a tooth, and we're back at the beginning
             PORTB &= 0xEF; //turn off pb4
             tooth = 1; //reset tooth count
         }
@@ -35,7 +35,7 @@ int main(void) {
 }
 
 ISR(INT0_vect) {
-    prevPeriod = micros();
+    prevPeriod = m_micros();
     TCNT0 = 0;
     tmrOvf = 0;
     tooth++;
