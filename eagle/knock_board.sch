@@ -8072,10 +8072,10 @@ Source: www.kingbright.com</description>
 <instance part="GND3" gate="1" x="53.34" y="129.54" rot="R90"/>
 <instance part="P+4" gate="VCC" x="-25.4" y="116.84" rot="MR270"/>
 <instance part="GND4" gate="1" x="-25.4" y="109.22" rot="MR90"/>
-<instance part="LED1" gate="G$1" x="60.96" y="96.52" rot="MR180"/>
-<instance part="LED2" gate="G$1" x="55.88" y="93.98" rot="MR180"/>
-<instance part="LED3" gate="G$1" x="45.72" y="88.9" rot="MR270"/>
-<instance part="LED4" gate="G$1" x="35.56" y="86.36" rot="MR270"/>
+<instance part="LED1" gate="G$1" x="60.96" y="93.98" rot="MR180"/>
+<instance part="LED2" gate="G$1" x="55.88" y="91.44" rot="MR180"/>
+<instance part="LED3" gate="G$1" x="45.72" y="86.36" rot="MR270"/>
+<instance part="LED4" gate="G$1" x="35.56" y="83.82" rot="MR270"/>
 <instance part="R1" gate="G$1" x="40.64" y="109.22" rot="R90"/>
 <instance part="R2" gate="G$1" x="50.8" y="109.22" rot="R90"/>
 <instance part="R3" gate="G$1" x="55.88" y="109.22" rot="R90"/>
@@ -8303,60 +8303,60 @@ Source: www.kingbright.com</description>
 <wire x1="71.12" y1="129.54" x2="71.12" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$5" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="12/MISO"/>
-<pinref part="LED4" gate="G$1" pin="A"/>
-<wire x1="30.48" y1="86.36" x2="33.02" y2="86.36" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$8" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="11/MOSI"/>
-<pinref part="LED3" gate="G$1" pin="A"/>
-<wire x1="30.48" y1="88.9" x2="43.18" y2="88.9" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$9" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="10/TX2/PWM"/>
-<pinref part="LED2" gate="G$1" pin="A"/>
-<wire x1="30.48" y1="91.44" x2="55.88" y2="91.44" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$10" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="9/RX2/PWM"/>
-<pinref part="LED1" gate="G$1" pin="A"/>
-<wire x1="30.48" y1="93.98" x2="60.96" y2="93.98" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$11" class="0">
 <segment>
 <pinref part="LED4" gate="G$1" pin="C"/>
 <pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="40.64" y1="86.36" x2="40.64" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="83.82" x2="40.64" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
 <segment>
 <pinref part="LED3" gate="G$1" pin="C"/>
 <pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="50.8" y1="88.9" x2="50.8" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="86.36" x2="50.8" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="LED2" gate="G$1" pin="C"/>
 <pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="55.88" y1="99.06" x2="55.88" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="96.52" x2="55.88" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
 <pinref part="LED1" gate="G$1" pin="C"/>
 <pinref part="R8" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="101.6" x2="60.96" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="99.06" x2="60.96" y2="104.14" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="LED4" gate="G$1" pin="A"/>
+<pinref part="U$1" gate="G$1" pin="13/SCK/LED"/>
+<wire x1="33.02" y1="83.82" x2="30.48" y2="83.82" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="12/MISO"/>
+<pinref part="LED3" gate="G$1" pin="A"/>
+<wire x1="30.48" y1="86.36" x2="43.18" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="11/MOSI"/>
+<pinref part="LED2" gate="G$1" pin="A"/>
+<wire x1="30.48" y1="88.9" x2="55.88" y2="88.9" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="LED1" gate="G$1" pin="A"/>
+<pinref part="U$1" gate="G$1" pin="10/TX2/PWM"/>
+<wire x1="60.96" y1="91.44" x2="30.48" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
