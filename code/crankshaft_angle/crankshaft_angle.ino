@@ -18,8 +18,8 @@ int main(void) {
 		   //0x01 for prescaler=1, 0x02 for prescaler=8
     TIMSK = 0x02; //enable counter0 overflow interrupts
     DDRB = 0x10; //set PB4 as output
-    PCMSK |= 0x08; //enable PCINT3
-    GIMSK = 0x20; //enable PCINT interrupts
+    MCUCR |= 0x03; //set INT0/PB2 to trigger an interrupt on every rising edge
+    GIMSK = 0x40; //enable INT0 interrupts
 
     sei(); //turn on interrupts globally
 
@@ -28,13 +28,13 @@ int main(void) {
             PORTB &= 0xEF; //turn off pb4
             tooth = 1; //reset tooth count
         }
-        if(tooth - TDC_TOOTH == 4) {	//we've reached the end of the "knock zone"
+        if(tooth - TDC_TOOTH == 2) {	//we've reached the end of the "knock zone"
             PORTB |= 0x10; //turn on pb4
         }
     }
 }
 
-ISR(PCINT0_vect) {
+ISR(INT0_vect) {
     prevPeriod = m_micros();
     TCNT0 = 0;
     tmrOvf = 0;
