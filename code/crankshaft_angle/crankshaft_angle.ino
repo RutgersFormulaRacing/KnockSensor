@@ -6,7 +6,7 @@
 #define TDC_TOOTH 1
 
 uint8_t tooth = 1;
-uint8_t tmrOvf = 0;
+uint16_t tmrOvf = 0;
 uint16_t prevPeriod = 0;
 
 uint16_t m_micros(void) {
