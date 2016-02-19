@@ -1,9 +1,15 @@
-void setup() {
-  pinMode(13, OUTPUT);
+#DELAY 1
 
+void setup() {
+  pinMode(7, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  for(int i = 0;i<11;i++) {
+    digitalWrite(7,HIGH);
+    delay(DELAY);
+    digitalWrite(7,LOW);
+    delay(DELAY);
+  }
+  delay(DELAY*2);
 }
