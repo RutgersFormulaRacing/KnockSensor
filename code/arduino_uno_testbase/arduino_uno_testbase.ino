@@ -1,4 +1,4 @@
-#DELAY 1
+#define DELAY 10
 
 void setup() {
   pinMode(7, OUTPUT);

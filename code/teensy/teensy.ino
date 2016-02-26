@@ -10,7 +10,7 @@ const int diagLED_knock_detected = 12;
 const int diagLED_in_knock_zone = 11;
 const int diagLED_receiving_vibration_signal = 10;
 const int vibration_signal_pin = A0;
-const int knock_zone_pin = 15;
+const int not_knock_zone_pin = 15;
 
 // GUItool: begin automatically generated code
 AudioInputAnalog         adc1;           //xy=137.1999969482422,188.1999969482422
@@ -36,7 +36,7 @@ void setup() {
   pinMode(diagLED_knock_detected, OUTPUT);
   pinMode(diagLED_in_knock_zone, OUTPUT);
   pinMode(diagLED_receiving_vibration_signal, OUTPUT);
-  pinMode(knock_zone_pin, INPUT_PULLUP);
+  pinMode(not_knock_zone_pin, INPUT_PULLUP);
 }
 
 void loop() {
@@ -47,6 +47,16 @@ void loop() {
     digitalWrite(diagLED_device_on, LOW);
   }
 
+  //turn on diagnostic LED to show that we are recieving a knock signal
+  if(analogRead(vibration_signal_pin) > 5) {
+    digitalWrite(diagLED_receiving_vibration_signal, HIGH);
+  } else {
+    digitalWrite(diagLED_receiving_vibration_signal, LOW);
+  }
+
+  //turn on diagnostic LED if we are in the knock zone
+  digitalWrite(diagLED_in_knock_zone, !digitalRead(not_knock_zone_pin));
+
   /*
    * if not in knock zone
    *  detect and save baseline signal (rms? mean? how many bins? digital filter or analog?)
@@ -54,5 +64,13 @@ void loop() {
    *  if signal - baseline > threshold (how high is threshold?)
    *    knock is detected
    */
+   //not in knock zone
+  if(digitalRead(not_knock_zone_pin)) {
+    
+  } 
+  //in the knock zone
+  else {
+    
+  }
 }
 
