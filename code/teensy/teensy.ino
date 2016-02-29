@@ -4,6 +4,12 @@
 #include <SD.h>
 #include <SerialFlash.h>
 
+#define ADC_EPS 50
+#define PULSE_LENGTH 50
+#define RMS_FACTOR 1.5
+#define PEAK_FACTOR 1.5
+
+
 //define pin constants
 const int diagLED_device_on = 13;
 const int diagLED_knock_detected = 12;
@@ -11,19 +17,20 @@ const int diagLED_in_knock_zone = 11;
 const int diagLED_receiving_vibration_signal = 10;
 const int vibration_signal_pin = A0;
 const int not_knock_zone_pin = 15;
+const int ecu_output_pin = A14;
 
 // GUItool: begin automatically generated code
-AudioInputAnalog         adc1;           //xy=137.1999969482422,188.1999969482422
-AudioAnalyzeToneDetect   tone1;          //xy=336.20001220703125,162.1999969482422
-AudioAnalyzeRMS          rms1;           //xy=337.2000274658203,322.2000274658203
-AudioAnalyzeFFT256       fft256_1;       //xy=338.1999969482422,109.19999694824219
-AudioAnalyzeNoteFrequency notefreq1;      //xy=342.2000274658203,218.20001220703125
-AudioAnalyzeFFT1024      fft1024_1;      //xy=345.2000274658203,50.19999694824219
-AudioConnection          patchCord1(adc1, fft256_1);
-AudioConnection          patchCord2(adc1, tone1);
-AudioConnection          patchCord3(adc1, notefreq1);
-AudioConnection          patchCord4(adc1, fft1024_1);
-AudioConnection          patchCord6(adc1, rms1);
+AudioInputAnalog         adc;           //xy=137.1999969482422,188.1999969482422
+AudioAnalyzeToneDetect   tonedetect;          //xy=336.20001220703125,162.1999969482422
+AudioAnalyzeRMS          rms;           //xy=337.2000274658203,322.2000274658203
+AudioAnalyzePeak          peak;           //xy=337.2000274658203,322.2000274658203
+AudioAnalyzeFFT256       fft256;       //xy=338.1999969482422,109.19999694824219
+AudioAnalyzeFFT1024      fft1024;      //xy=345.2000274658203,50.19999694824219
+AudioConnection          patchCord1(adc, fft256);
+AudioConnection          patchCord2(adc, tonedetect);
+AudioConnection          patchCord4(adc, fft1024);
+AudioConnection          patchCord6(adc, rms);
+AudioConnection          patchCord7(adc, peak);
 // GUItool: end automatically generated code
 
 //elapsedMillis emillis;
@@ -36,8 +43,14 @@ void setup() {
   pinMode(diagLED_knock_detected, OUTPUT);
   pinMode(diagLED_in_knock_zone, OUTPUT);
   pinMode(diagLED_receiving_vibration_signal, OUTPUT);
+  pinMode(ecu_output_pin, OUTPUT);
   pinMode(not_knock_zone_pin, INPUT_PULLUP);
 }
+
+unsigned long pulseStart = 0;
+int samples = 0;
+double level = 0;
+double mean = 0;
 
 void loop() {
   //blink the diagnostic LED at 1 hz to show that our code is running on the device
@@ -47,8 +60,8 @@ void loop() {
     digitalWrite(diagLED_device_on, LOW);
   }
 
-  //turn on diagnostic LED to show that we are recieving a knock signal
-  if(analogRead(vibration_signal_pin) > 5) {
+  //turn on diagnostic LED if we are recieving a vibration signal
+  if(abs(analogRead(vibration_signal_pin) - 512) > ADC_EPS) {
     digitalWrite(diagLED_receiving_vibration_signal, HIGH);
   } else {
     digitalWrite(diagLED_receiving_vibration_signal, LOW);
@@ -57,20 +70,57 @@ void loop() {
   //turn on diagnostic LED if we are in the knock zone
   digitalWrite(diagLED_in_knock_zone, !digitalRead(not_knock_zone_pin));
 
-  /*
-   * if not in knock zone
-   *  detect and save baseline signal (rms? mean? how many bins? digital filter or analog?)
-   * else
-   *  if signal - baseline > threshold (how high is threshold?)
-   *    knock is detected
-   */
-   //not in knock zone
+  //turn on knock detected pins
+  if(millis() - pulseStart < PULSE_LENGTH) {
+    digitalWrite(diagLED_knock_detected, HIGH);
+    digitalWrite(ecu_output_pin, HIGH);
+  } else {
+    digitalWrite(diagLED_knock_detected, LOW);
+    digitalWrite(ecu_output_pin, LOW);
+  }
+
+  //choose one
+  detect_rms();
+  //detect_peak();
+  //TODO fft versions
+}
+
+void detect_rms() {
+  //not in knock zone
   if(digitalRead(not_knock_zone_pin)) {
-    
+    if(rms.available()) {
+      level+=rms.read();
+      mean = level/++samples;
+    }
   } 
   //in the knock zone
   else {
-    
+    meanLevel = 0;
+    samples = 0;
+    if(rms.available()) {
+      if(rms.read() / mean > RMS_FACTOR) {
+        pulseStart = millis();
+      }
+    }
   }
 }
 
+void detect_peak() {
+  //not in knock zone
+  if(digitalRead(not_knock_zone_pin)) {
+    if(peak.available()) {
+      level+=peak.read();
+      mean = level/++samples;
+    }
+  } 
+  //in the knock zone
+  else {
+    meanLevel = 0;
+    samples = 0;
+    if(peak.available()) {
+      if(rms.read() / mean > PEAK_FACTOR) {
+        pulseStart = millis();
+      }
+    }
+  }
+}
