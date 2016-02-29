@@ -95,7 +95,7 @@ void detect_rms() {
   } 
   //in the knock zone
   else {
-    meanLevel = 0;
+    level = 0;
     samples = 0;
     if(rms.available()) {
       if(rms.read() / mean > RMS_FACTOR) {
@@ -115,7 +115,7 @@ void detect_peak() {
   } 
   //in the knock zone
   else {
-    meanLevel = 0;
+    level = 0;
     samples = 0;
     if(peak.available()) {
       if(rms.read() / mean > PEAK_FACTOR) {
