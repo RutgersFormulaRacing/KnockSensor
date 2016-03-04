@@ -7,7 +7,8 @@
 #define ADC_EPS 50
 #define PULSE_LENGTH 50
 #define RMS_FACTOR 1.5
-#define PEAK_FACTOR 1.5
+#define PEAK_FACTOR 3
+#define TONE_FACTOR 4
 
 
 //define pin constants
@@ -25,10 +26,8 @@ AudioAnalyzeToneDetect   tonedetect;          //xy=336.20001220703125,162.199996
 AudioAnalyzeRMS          rms;           //xy=337.2000274658203,322.2000274658203
 AudioAnalyzePeak          peak;           //xy=337.2000274658203,322.2000274658203
 AudioAnalyzeFFT256       fft256;       //xy=338.1999969482422,109.19999694824219
-AudioAnalyzeFFT1024      fft1024;      //xy=345.2000274658203,50.19999694824219
 AudioConnection          patchCord1(adc, fft256);
 AudioConnection          patchCord2(adc, tonedetect);
-AudioConnection          patchCord4(adc, fft1024);
 AudioConnection          patchCord6(adc, rms);
 AudioConnection          patchCord7(adc, peak);
 // GUItool: end automatically generated code
@@ -82,6 +81,7 @@ void loop() {
   //choose one
   detect_rms();
   //detect_peak();
+  //detect_tone();
   //TODO fft versions
 }
 
@@ -118,7 +118,27 @@ void detect_peak() {
     level = 0;
     samples = 0;
     if(peak.available()) {
-      if(rms.read() / mean > PEAK_FACTOR) {
+      if(peak.read() / mean > PEAK_FACTOR) {
+        pulseStart = millis();
+      }
+    }
+  }
+}
+
+void detect_tone() {
+  //not in knock zone
+  if(digitalRead(not_knock_zone_pin)) {
+    if(tonedetect.available()) {
+      level+=tonedetect.read();
+      mean = level/++samples;
+    }
+  } 
+  //in the knock zone
+  else {
+    level = 0;
+    samples = 0;
+    if(tonedetect.available()) {
+      if(tonedetect.read() / mean > TONE_FACTOR) {
         pulseStart = millis();
       }
     }
