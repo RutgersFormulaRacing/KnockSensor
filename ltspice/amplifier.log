@@ -1,0 +1,107 @@
+Circuit: * Z:\media\rajan\storage\Documents\school\RFR\KnockSensor\ltspice\amplifier.asc
+
+WARNING: Node U1:N007 is floating.
+
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Gmin = 10
+Gmin = 1.07374
+Gmin = 0.115292
+Gmin = 0.0123794
+Gmin = 0.00132923
+Gmin = 0.000142725
+Gmin = 1.5325e-005
+Gmin = 1.6455e-006
+Gmin = 1.76685e-007
+Gmin = 1.89714e-008
+vernier = 0.5
+vernier = 0.25
+vernier = 0.125
+Gmin = 1.10812e-008
+vernier = 0.0625
+vernier = 0.0833333
+Gmin = 9.73786e-009
+vernier = 0.111111
+vernier = 0.148148
+Gmin = 7.37174e-009
+vernier = 0.197531
+Gmin = 4.77298e-009
+vernier = 0.263374
+vernier = 0.351165
+Gmin = 2.32513e-009
+vernier = 0.46822
+vernier = 0.624294
+Gmin = 7.56723e-010
+vernier = 0.832392
+Gmin = 1.36264e-010
+vernier = 1
+Gmin = 1.46313e-011
+Gmin = 1.57102e-012
+Gmin = 1.68687e-013
+Gmin = 0
+Gmin stepping succeeded in finding the operating point.
+
+Semiconductor Device Operating Points:
+                        --- Diodes ---
+Name:    d:u2:2      d:u2:3      d:u2:1      d:u2:11     d:u2:10
+Model:    u2:dp     u2:dbias    u2:dbias     u2:desd     u2:desd
+Id:      3.65e-05    2.70e-12    2.70e-12   -2.75e-12   -2.75e-12
+Vd:      5.00e+00    2.50e+00    2.50e+00   -2.50e+00   -2.50e+00
+Req:     1.00e-04    1.00e-09    1.00e-09    1.00e-13    1.00e-13
+CAP:     0.00e+00    0.00e+00    0.00e+00    0.00e+00    0.00e+00
+
+Name:    d:u2:7      d:u2:6      d:u2:9      d:u2:8      d:u2:5
+Model:   u2:desd     u2:desd     u2:dlim    u2:dlimp    u2:dlimn
+Id:     -2.75e-12   -2.75e-12    3.38e-10    3.42e-09    3.38e-09
+Vd:     -2.50e+00   -2.50e+00    1.69e-01    3.42e-01    3.38e-01
+Req:     1.00e-13    1.00e-13    2.00e-09    1.00e-08    1.00e-08
+CAP:     0.00e+00    0.00e+00    0.00e+00    0.00e+00    0.00e+00
+
+Name:    d:u1:2      d:u1:3      d:u1:1      d:u1:11     d:u1:10
+Model:    u1:dp     u1:dbias    u1:dbias     u1:desd     u1:desd
+Id:     -7.70e-15   -4.35e-18   -4.35e-18    6.07e-18    2.39e-18
+Vd:     -7.69e-06   -2.17e-06   -2.17e-06    5.52e-06    2.17e-06
+Req:     1.00e-09    1.00e-12    1.00e-12    1.00e-13    1.00e-13
+CAP:     0.00e+00    0.00e+00    0.00e+00    0.00e+00    0.00e+00
+
+Name:    d:u1:7      d:u1:6      d:u1:9      d:u1:8      d:u1:5
+Model:   u1:desd     u1:desd     u1:dlim    u1:dlimp    u1:dlimn
+Id:      6.07e-18    2.39e-18    3.38e-10    3.42e-09    3.38e-09
+Vd:      5.52e-06    2.17e-06    1.69e-01    3.42e-01    3.38e-01
+Req:     1.00e-13    1.00e-13    2.00e-09    1.00e-08    1.00e-08
+CAP:     0.00e+00    0.00e+00    0.00e+00    0.00e+00    0.00e+00
+
+                        --- VDMOSFET Transistors ---
+Name:        m:u2:2      m:u2:1      m:u1:2      m:u1:1
+Model:        u2:pi       u2:ni       u1:pi       u1:ni
+Id:         -1.85e-05    1.85e-05    3.42e-09   -3.42e-09
+Vgs:        -3.42e-01    3.38e-01   -3.42e-01    3.38e-01
+Vds:        -2.50e+00    2.50e+00    4.05e-06   -3.64e-06
+Vth:        -3.00e-01    3.00e-01   -3.00e-01    3.00e-01
+Gm:          8.70e-04    9.73e-04    8.09e-08    9.11e-08
+Gds:         1.80e-07    1.80e-07    8.46e-04    9.40e-04
+Cgs:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cgd:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cbody:       0.00e+00    0.00e+00    0.00e+00    0.00e+00
+
+
+
+Date: Fri Apr 08 15:48:35 2016
+Total elapsed time: 0.048 seconds.
+
+tnom = 27
+temp = 27
+method = trap
+totiter = 1008
+traniter = 0
+tranpoints = 0
+accept = 0
+rejected = 0
+matrix size = 24
+fillins = 39
+solver = Normal
+Thread vector: 14.8/7.3[3] 0.0/0.0[0] 1.6/1.4[2] 0.3/1.0[1]  2592/500
+Matrix Compiler1: 4.71 KB object code size
+Matrix Compiler2: off  [0.5]/0.5/0.6
+
+

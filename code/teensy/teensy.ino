@@ -37,6 +37,7 @@ AudioConnection          patchCord7(adc, peak);
 
 void setup() {
   AudioMemory(10);
+  tonedetect.frequency(6000);
   
   pinMode(diagLED_device_on, OUTPUT);
   pinMode(diagLED_knock_detected, OUTPUT);
@@ -132,7 +133,7 @@ void detect_tone() {
       level+=tonedetect.read();
       mean = level/++samples;
     }
-  } 
+  }
   //in the knock zone
   else {
     level = 0;
